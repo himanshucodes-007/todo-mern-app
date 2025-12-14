@@ -24,7 +24,7 @@ A full-stack **TODO application** built using the **MERN Stack** to revise and d
 ---
 
 ## 📁 Project Structure
-
+```bash
 todo-mern-app/
 │
 ├── backend/
@@ -43,7 +43,7 @@ todo-mern-app/
 │ └── package.json
 │
 └── README.md
-
+```
 
 ---
 
@@ -92,8 +92,9 @@ todo-mern-app/
 cd backend
 npm install
 npm run dev
-
+```
 ### Frontend
+```bash
 cd frontend
 npm install
 npm run dev
