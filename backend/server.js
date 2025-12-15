@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import protect from "./middleware/authMiddleware.js";
+import taskRoutes from "./routes/taskRoutes.js";
 
 dotenv.config();
 
@@ -26,6 +27,8 @@ app.get("/api/test", protect, (req, res) => {
 });
 
 app.use("/api/auth",authRoutes);
+
+app.use("/api/tasks",taskRoutes);
 
 const PORT = process.env.port || 5000;
 app.listen(PORT,() => {
