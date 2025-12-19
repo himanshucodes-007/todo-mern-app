@@ -70,15 +70,14 @@ export default function Dashboard() {
   };
 
   return (
-    <Motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="min-h-screen bg-gray-50 p-6"
-    >
-      <div className="max-w-md mx-auto space-y-4">
-        {/* Header */}
+    <div className="min-h-screen bg-linear-to-br from-slate-900 to-slate-800 p-6">
+      <Motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-md mx-auto bg-white/90 backdrop-blur rounded-xl shadow-xl p-6 space-y-4"
+      >
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold">My Tasks</h1>
+          <h1 className="text-2xl font-bold text-slate-800">My Tasks</h1>
           <button
             onClick={logout}
             className="text-sm text-red-500 hover:underline"
@@ -87,23 +86,27 @@ export default function Dashboard() {
           </button>
         </div>
 
-        {/* Add Task */}
         <form onSubmit={addTask} className="flex gap-2">
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="New task..."
-            className="flex-1 border p-2 rounded focus:outline-none"
+            placeholder="What needs to be done?"
+            className="flex-1 border rounded-lg p-2"
           />
-          <button type="submit" className="bg-blue-600 text-white px-4 rounded">
+          <Motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-blue-600 text-white px-4 rounded-lg"
+          >
             Add
-          </button>
+          </Motion.button>
         </form>
 
-        {/* Task List */}
         <Motion.div layout className="space-y-2">
           {tasks.length === 0 && (
-            <p className="text-center text-gray-500 text-sm">No tasks yet</p>
+            <p className="text-center text-gray-500 text-sm">
+              ✨ Start by adding your first task
+            </p>
           )}
 
           {tasks.map((task) => (
@@ -115,7 +118,8 @@ export default function Dashboard() {
             />
           ))}
         </Motion.div>
-      </div>
-    </Motion.div>
+      </Motion.div>
+    </div>
   );
+
 }
